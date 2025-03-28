@@ -23,6 +23,9 @@ func _physics_process(delta):
 	if can_attack:
 		handle_attacks(delta)
 	
+	# Handle one-way platform collisions
+	handle_platform_collisions()
+	
 	move_and_slide()
 
 func handle_movement():
@@ -60,3 +63,18 @@ func perform_smash():
 	for body in bodies:
 		if body.is_in_group("Enemy"):
 			body.queue_free()
+
+func handle_platform_collisions():
+	# If moving down and pressing down, disable collision with platforms
+	if Input.is_action_pressed("ui_down"):
+		# Get all bodies we're colliding with
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			var collider = collision.get_collider()
+			if collider.is_in_group("Platform"):
+				# Disable collision with this specific platform
+				collider.set_collision_layer_value(1, false)
+	else:
+		# Re-enable collision with all platforms
+		for platform in get_tree().get_nodes_in_group("Platform"):
+			platform.set_collision_layer_value(1, true)
