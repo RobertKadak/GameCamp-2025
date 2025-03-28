@@ -7,8 +7,11 @@ var moving = true
 var waiting = false
 
 @onready var wait_timer = $Timer
+@onready var path = $PathFollow2D
+@onready var node = $CharacterBody2D
 
 func _ready():
+	node.set_rotation_degrees(0)
 	wait_timer.wait_time = wait_time
 	wait_timer.one_shot = true
 	wait_timer.timeout.connect(_on_Timer_timeout)

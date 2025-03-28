@@ -48,6 +48,3 @@ func die():
 	is_dead = true
 	velocity = Vector2.ZERO
 	queue_free()
-
-func _ready():
-	add_to_group("SmallGuy")
