@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=3]
 
 [ext_resource type="PackedScene" uid="uid://ddist6hxf1bmw" path="res://entities/small guy/character_body_2d.tscn" id="1_player"]
-[ext_resource type="PackedScene" path="res://scenes/floor.tscn" id="2_floor"]
-[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="3_enemy"]
+[ext_resource type="PackedScene" uid="uid://do6b2sj5kb4yg" path="res://temp/floor.tscn" id="2_floor"]
+[ext_resource type="PackedScene" path="res://temp/enemy.tscn" id="3_enemy"]
+
 
 [node name="Main" type="Node2D"]
 
