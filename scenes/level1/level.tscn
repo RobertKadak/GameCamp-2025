@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvpohaop4s704"]
+
+[ext_resource type="Script" uid="uid://cni0urkugmoh2" path="res://scenes/level1/camera_controller.gd" id="1_camera_controller"]
+[ext_resource type="PackedScene" uid="uid://0gw2fos8q2c7" path="res://entities/big guy/player.tscn" id="1_thcxp"]
+[ext_resource type="PackedScene" uid="uid://clj1pl6juouqg" path="res://scenes/wall.tscn" id="3_3ifb4"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3ifb4"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_thcxp")]
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+script = ExtResource("1_camera_controller")
+target = NodePath("../Player")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 996)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_3ifb4")
+
+[node name="Wall" parent="." instance=ExtResource("3_3ifb4")]
+position = Vector2(246, 379)
+
+[node name="Wall2" parent="." instance=ExtResource("3_3ifb4")]
+position = Vector2(132, 903)
