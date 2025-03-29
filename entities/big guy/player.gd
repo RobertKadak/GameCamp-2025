@@ -32,17 +32,16 @@ func _physics_process(delta):
 				move_and_slide()
 
 func handle_movement():
+	# Handle jump
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = jump_force
 	var is_active = active_manager.active
 	
 	if is_active == 1:
-	# Handle jump
-		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-			velocity.y = jump_force
-	
 	# Get input direction
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * speed
+		var direction = Input.get_axis("ui_left", "ui_right")
+		if direction:
+			velocity.x = direction * speed
 		animated_sprite.play("walking")
 		animated_sprite.flip_h = direction < 0
 	else:
