@@ -1,7 +1,6 @@
 extends Area2D
 
 var is_pressed = false
-var press_count = 0
 var player_in_range = false
 
 var player = null
@@ -26,3 +25,4 @@ func on_interact():
 		get_parent().active_manager.control_cat = false
 		get_parent().to_play_idle = "idleWithCat"
 		get_parent().to_play_walking = "walkWithCat"
+		get_parent().animated_sprite.play("idleWithCat") 

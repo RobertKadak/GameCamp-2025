@@ -34,7 +34,7 @@ shape = SubResource("WorldBoundaryShape2D_3ifb4")
 position = Vector2(246, 379)
 
 [node name="Wall2" parent="." instance=ExtResource("3_3ifb4")]
-position = Vector2(-236, 886)
+position = Vector2(-232, 906)
 
 [node name="Platform" parent="." instance=ExtResource("4_platform")]
 position = Vector2(-231, 782)

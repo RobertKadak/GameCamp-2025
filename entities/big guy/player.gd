@@ -3,19 +3,17 @@ extends CharacterBody2D
 @export var speed = 400
 @export var jump_force = -600
 @export var gravity = 980
-@export var smash_cooldown = 1.0  # Cooldown in seconds
-@export var can_attack = true  # Toggle to enable/disable attacking
 @onready var animated_sprite = $AnimatedSprite2D
-var to_play_idle
-var to_play_walking
 @onready var active_manager = get_parent()
 
-var can_smash = true
-var smash_timer = 0.0
+var cat_on_golem = false
+
+var to_play_idle
+var to_play_walking
 
 func _ready():
 	to_play_idle = "idle"
-	to_play_walking ="walking"
+	to_play_walking = "walking"
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -23,9 +21,6 @@ func _physics_process(delta):
 	handle_platform_collisions()
 	if !active_manager.control_cat:
 		handle_movement()
-		# Handle attacks if enabled
-		if can_attack:
-			handle_attacks(delta)		
 		move_and_slide()
 
 
@@ -40,31 +35,17 @@ func handle_movement():
 		velocity.x = move_toward(velocity.x, 0, speed)
 		animated_sprite.play(to_play_idle)
 		
-
-func handle_attacks(delta):
-	# Handle smash attack
-	if Input.is_action_just_pressed("ui_text_indent") and can_smash:
-		print('smashing')
-		perform_smash()
-		can_smash = false
-		smash_timer = smash_cooldown
-	
-	# Update smash cooldown
-	if not can_smash:
-		smash_timer -= delta
-		if smash_timer <= 0:
-			can_smash = true
-
-func perform_smash():
-	# Get all bodies in the smash area
-	var smash_area = $SmashArea
-	var bodies = smash_area.get_overlapping_bodies()
-	
-	# Kill all enemies in the area
-	for body in bodies:
-		if body.is_in_group("Enemy"):
-			body.queue_free()
-
+	#CAT GET OFF
+	if Input.is_action_just_pressed("ui_filedialog_show_hidden"):
+			var small_guy_scene = preload("res://entities/small guy/small_guy.tscn")
+			var small_guy = small_guy_scene.instantiate()
+			small_guy.position = self.position
+			small_guy.z_index = 2
+			self.get_parent().add_child(small_guy)
+			to_play_idle = "idle"
+			to_play_walking = "walking"
+			animated_sprite.play(to_play_idle)
+			active_manager.control_cat = true
 func handle_platform_collisions():
 	# If moving down and pressing down, disable collision with platforms
 	if Input.is_action_pressed("ui_down"):
