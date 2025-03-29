@@ -10,8 +10,7 @@ var player = null
 func _ready():
 	# Connect the area signals
 	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
-
+	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_filedialog_show_hidden") and player_in_range:
 		is_pressed = true
@@ -23,12 +22,6 @@ func _on_body_entered(body):
 		player_in_range = true
 		label.text ="Press E"
 		print("Player entered button area")
-
-func _on_body_exited(body):
-	if body.is_in_group("SmallGuy"):
-		player_in_range = false
-		label.text = "Too far"
-		print("Player left button area")
 
 func on_interact():
 	press_count += 1
