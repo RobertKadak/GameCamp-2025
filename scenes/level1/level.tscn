@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dblcwxlemf8ew" path="res://scenes/level1/level.gd" id="1_w8fjv"]
 [ext_resource type="PackedScene" uid="uid://clj1pl6juouqg" path="res://scenes/wall.tscn" id="3_3ifb4"]
 [ext_resource type="PackedScene" uid="uid://btgfq2h7q85p0" path="res://scenes/platform.tscn" id="4_platform"]
-[ext_resource type="PackedScene" path="res://entities/small guy/small_guy.tscn" id="5_q0hxv"]
+[ext_resource type="PackedScene" uid="uid://ddist6hxf1bmw" path="res://entities/small guy/small_guy.tscn" id="5_q0hxv"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3ifb4"]
 
