@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var smash_cooldown = 1.0  # Cooldown in seconds
 @export var can_move = true  # Toggle to enable/disable movement
 @export var can_attack = true  # Toggle to enable/disable attacking
+@onready var animated_sprite = $AnimatedSprite2D
 
 var can_smash = true
 var smash_timer = 0.0
@@ -37,8 +38,11 @@ func handle_movement():
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * speed
+		animated_sprite.play("walking")
+		animated_sprite.flip_h = direction < 0
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
+		animated_sprite.play("idle")
 
 func handle_attacks(delta):
 	# Handle smash attack

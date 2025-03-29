@@ -9,7 +9,6 @@ var is_dead = false
 func _physics_process(delta):
 	if not is_dead:
 		player_movement(delta)
-	
 	# Handle one-way platform collisions
 	handle_platform_collisions()
 	
@@ -30,15 +29,14 @@ func handle_platform_collisions():
 		for platform in get_tree().get_nodes_in_group("Platform"):
 			platform.set_collision_layer_value(1, true)
 
-func player_movement(delta): 
-	if Input.is_action_pressed("ui_right"):
+func player_movement(delta):
+	var player_movement = Input.get_axis("ui_left", "ui_right")
+	if player_movement:
+		velocity.x = player_movement * speed
 		animated_sprite.play("walking")
-		velocity.x = speed 
-	elif Input.is_action_pressed("ui_left"):
-		animated_sprite.play("walking")
-		velocity.x = -speed
+		animated_sprite.flip_h = player_movement < 0
 	else:
-		velocity.x = 0
+		velocity.x = move_toward(velocity.x, 0, speed)
 		animated_sprite.play("Idle")
 	
 	if not is_on_floor():
