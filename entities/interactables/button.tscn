@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm84i3cbgfns"]
+
+[ext_resource type="Texture2D" uid="uid://dvgrs0ppvo8m6" path="res://icon.svg" id="1_ljkk0"]
+[ext_resource type="Script" uid="uid://bimip34hah38k" path="res://entities/interactables/button.gd" id="2_tssmc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tssmc"]
+size = Vector2(128, 131)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kp2ho"]
+size = Vector2(156, 153)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tssmc"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ljkk0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_tssmc")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_tssmc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2, 1.5)
+shape = SubResource("RectangleShape2D_kp2ho")
+
+[node name="Label" type="Label" parent="Area2D"]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_tssmc")

@@ -35,7 +35,7 @@ func player_movement(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = jump_force
 	
-	var is_active = active_manager.active
+	var is_active = 2 #active_manager.active
 	
 	if is_active == 2:
 		if Input.is_action_just_pressed("ui_text_indent"):
@@ -44,11 +44,11 @@ func player_movement(delta):
 		var direction = Input.get_axis("ui_left", "ui_right")
 		if direction:
 			velocity.x = direction * speed
-		animated_sprite.play("walkingC")
-		animated_sprite.flip_h = direction < 0
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		animated_sprite.play("idleC")
+			animated_sprite.play("walking")
+			animated_sprite.flip_h = direction < 0
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed)
+			animated_sprite.play("idle")
 
 func die():
 	is_dead = true
