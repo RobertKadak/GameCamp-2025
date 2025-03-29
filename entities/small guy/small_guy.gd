@@ -9,11 +9,11 @@ var is_dead = false
 
 func _physics_process(delta):
 	if not is_dead:
-		player_movement(delta)
-	# Handle one-way platform collisions
-	handle_platform_collisions()
-	
-	move_and_slide()
+		if active_manager.control_cat:
+			player_movement(delta)
+			# Handle one-way platform collisions
+			handle_platform_collisions()
+			move_and_slide()
 
 func handle_platform_collisions():
 	# If moving down and pressing down, disable collision with platforms
@@ -31,24 +31,20 @@ func handle_platform_collisions():
 			platform.set_collision_layer_value(1, true)
 
 func player_movement(delta):
+	if Input.is_action_just_pressed("ui_text_indent"):
+		active_manager.control_cat = false	 
 	# Handle jump
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = jump_force
-	
-	var is_active = 2 #active_manager.active
-	
-	if is_active == 2:
-		if Input.is_action_just_pressed("ui_text_indent"):
-			is_active = 1 
 	# Get input direction
-		var direction = Input.get_axis("ui_left", "ui_right")
-		if direction:
-			velocity.x = direction * speed
-			animated_sprite.play("walking")
-			animated_sprite.flip_h = direction < 0
-		else:
-			velocity.x = move_toward(velocity.x, 0, speed)
-			animated_sprite.play("idle")
+	var direction = Input.get_axis("ui_left", "ui_right")
+	if direction:
+		velocity.x = direction * speed
+		animated_sprite.play("walking")
+		animated_sprite.flip_h = direction < 0
+	else:
+		velocity.x = move_toward(velocity.x, 0, speed)
+		animated_sprite.play("idle")
 
 func die():
 	is_dead = true
