@@ -4,6 +4,7 @@ const speed = 300
 @export var jump_impulse = 400
 const gravity = 980
 var is_dead = false
+@onready var animated_sprite = $AnimatedSprite2D
 
 func _physics_process(delta):
 	if not is_dead:
@@ -31,11 +32,14 @@ func handle_platform_collisions():
 
 func player_movement(delta): 
 	if Input.is_action_pressed("ui_right"):
+		animated_sprite.play("walking")
 		velocity.x = speed 
-	elif Input.is_action_pressed("ui_left"): 
+	elif Input.is_action_pressed("ui_left"):
+		animated_sprite.play("walking")
 		velocity.x = -speed
 	else:
 		velocity.x = 0
+		animated_sprite.play("Idle")
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
