@@ -25,6 +25,7 @@ window/size/mode=3
 
 Enemy="All enemies"
 SmallGuy="Small character player"
+BigGuy="Big character player"
 
 [input]
 
