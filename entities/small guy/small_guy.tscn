@@ -12,7 +12,7 @@ animations = [{
 "texture": ExtResource("2_al8dl")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"IdleC",
 "speed": 5.0
 }, {
 "frames": [{
@@ -23,7 +23,7 @@ animations = [{
 "texture": ExtResource("4_0msxi")
 }],
 "loop": true,
-"name": &"walking",
+"name": &"walkingC",
 "speed": 6.0
 }]
 
@@ -36,10 +36,8 @@ script = ExtResource("1_rietb")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(47, 85)
 sprite_frames = SubResource("SpriteFrames_al8dl")
-animation = &"walking"
-autoplay = "Idle"
-frame = 1
-frame_progress = 0.748533
+animation = &"walkingC"
+autoplay = "IdleC"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(40, 93)
