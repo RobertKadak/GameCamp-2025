@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcmg6meptmp42"]
+[gd_scene load_steps=5 format=3 uid="uid://4iuij3084jr3"]
 
-[ext_resource type="Script" uid="uid://bm6mjfal1y5qj" path="res://entities/enemies/stationary/stationary.gd" id="1_1ku3c"]
-[ext_resource type="Texture2D" uid="uid://dvgrs0ppvo8m6" path="res://icon.svg" id="2_jbi7b"]
+[ext_resource type="Script" uid="uid://dnklwvukyvqf1" path="res://entities/enemies/moving/enemy_moving.gd" id="1_3uprw"]
+[ext_resource type="Texture2D" uid="uid://dvgrs0ppvo8m6" path="res://icon.svg" id="2_t26rl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ycian"]
 size = Vector2(128, 129)
@@ -10,10 +10,10 @@ size = Vector2(128, 129)
 size = Vector2(164.5, 130)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-script = ExtResource("1_1ku3c")
+script = ExtResource("1_3uprw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_jbi7b")
+texture = ExtResource("2_t26rl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
@@ -22,10 +22,12 @@ shape = SubResource("RectangleShape2D_ycian")
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-148, -1)
 
-[node name="Vision" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_gbbff")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(-50, 0)
 
 [node name="ReactionTime" type="Timer" parent="."]
+
+[node name="PatrolWait" type="Timer" parent="."]

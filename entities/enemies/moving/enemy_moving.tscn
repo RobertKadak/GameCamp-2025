@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://4iuij3084jr3"]
+[gd_scene load_steps=6 format=3 uid="uid://4iuij3084jr3"]
 
 [ext_resource type="Script" uid="uid://dnklwvukyvqf1" path="res://entities/enemies/moving/enemy_moving.gd" id="1_3uprw"]
 [ext_resource type="Texture2D" uid="uid://dvgrs0ppvo8m6" path="res://icon.svg" id="2_t26rl"]
+[ext_resource type="Texture2D" uid="uid://v6erfketcqxo" path="res://ui/catidle.png" id="3_r811l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ycian"]
 size = Vector2(128, 129)
@@ -24,6 +25,11 @@ position = Vector2(-148, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_gbbff")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(7.49999, -2)
+scale = Vector2(1.35333, 1.02667)
+texture = ExtResource("3_r811l")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(-50, 0)
