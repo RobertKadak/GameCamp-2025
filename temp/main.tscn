@@ -18,4 +18,7 @@ position = Vector2(-13, -329)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_mpt1t")
 
-[node name="Path2D" parent="." instance=ExtResource("2_plon1")]
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("2_plon1")]
+position = Vector2(564, 253)
+
