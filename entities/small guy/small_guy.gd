@@ -34,9 +34,12 @@ func player_movement(delta):
 	# Handle jump
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = jump_force
+	
 	var is_active = active_manager.active
 	
 	if is_active == 2:
+		if Input.is_action_just_pressed("ui_text_indent"):
+			is_active = 1 
 	# Get input direction
 		var direction = Input.get_axis("ui_left", "ui_right")
 		if direction:
