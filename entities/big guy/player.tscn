@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://0gw2fos8q2c7"]
+[gd_scene load_steps=12 format=3 uid="uid://0gw2fos8q2c7"]
 
 [ext_resource type="Script" uid="uid://dpd57au4fme3t" path="res://entities/big guy/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://le31yjomps2" path="res://ui/golemidle.png" id="2_ccybq"]
@@ -53,9 +53,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abrql"]
 size = Vector2(422, 673)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_smash"]
-size = Vector2(256, 64)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccybq"]
 size = Vector2(721, 740)
 
@@ -71,14 +68,6 @@ frame_progress = 0.0244075
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-30, -5.5)
 shape = SubResource("RectangleShape2D_abrql")
-
-[node name="SmashArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SmashArea"]
-position = Vector2(128, 0)
-shape = SubResource("RectangleShape2D_smash")
 
 [node name="InteractArea" type="Area2D" parent="."]
 monitorable = false

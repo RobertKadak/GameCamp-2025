@@ -1,7 +1,6 @@
 extends Area2D
 
 var is_pressed = false
-var press_count = 0
 var player_in_range = false
 
 var player = null
@@ -21,14 +20,10 @@ func _on_body_entered(body):
 		player = body
 		player_in_range = true
 		label.text ="Press E"
-		print("Player entered button area")
 
 func on_interact():
-	press_count += 1
-
 	# Visual feedback
 	#$ColorRect.color = Color(0.2, 0.8, 0.2, 1)  # Change to green when pressed
-	print("Button pressed! Count: ", press_count)
 
 	# Button press animation
 	var tween = create_tween()
@@ -51,4 +46,4 @@ func trigger_button_event():
 	# - Change the level
 	# - Activate a trap
 	# - etc.
-	print("Button event triggered!")
+	pass
