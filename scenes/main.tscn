@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" uid="uid://ddist6hxf1bmw" path="res://entities/small guy/small_guy.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/floor.tscn" id="2_floor"]
+[ext_resource type="PackedScene" path="res://scenes/button.tscn" id="3_button"]
+[ext_resource type="Script" path="res://scenes/active_manager.gd" id="4_manager"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("4_manager")
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(960, 500)
+
+[node name="Floor" parent="." instance=ExtResource("2_floor")]
+
+[node name="Button" parent="." instance=ExtResource("3_button")]
+position = Vector2(600, 900) 
