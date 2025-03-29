@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://7rok5jj6vafp"]
+
+[ext_resource type="Script" uid="uid://p5f25hajqh8t" path="res://control.gd" id="1_mqh5l"]
+[ext_resource type="Texture2D" uid="uid://d17jgtcm7l2cl" path="res://ui/catdead.png" id="2_7ns25"]
+[ext_resource type="FontFile" uid="uid://bf3cvjr03iy0j" path="res://ui/simbiot-personal-use/Simbiot.ttf" id="3_gwety"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wfw3d"]
+font = ExtResource("3_gwety")
+font_size = 300
+font_color = Color(1, 0, 0, 1)
+shadow_size = 300
+
+[sub_resource type="LabelSettings" id="LabelSettings_mqh5l"]
+font = ExtResource("3_gwety")
+font_size = 50
+font_color = Color(1, 0, 0, 1)
+
+[node name="Death Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mqh5l")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1923.0
+offset_bottom = 1091.0
+color = Color(0.187176, 0.187176, 0.187176, 1)
+
+[node name="Catdead" type="Sprite2D" parent="."]
+position = Vector2(941, 766)
+scale = Vector2(2.10667, 2.10667)
+texture = ExtResource("2_7ns25")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.021
+offset_left = 257.0
+offset_top = -7.0
+offset_right = 1709.0
+offset_bottom = 636.32
+text = "You Died"
+label_settings = SubResource("LabelSettings_wfw3d")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 578.0
+offset_top = 929.0
+offset_right = 1373.0
+offset_bottom = 1068.0
+text = "Press any button to continue"
+label_settings = SubResource("LabelSettings_mqh5l")

@@ -2,18 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-uid="uid://ctg44c5f6etvf"
-
-path="res://.godot/imported/catball.png-a781354ba7df78f1c3584c090848d8e5.ctex"
+uid="uid://cfep11wkf6uff"
+path="res://.godot/imported/7 preview.jpg-0121d16840166a34bf9652a3c001ae31.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/catball.png"
-dest_files=["res://.godot/imported/catball.png-a781354ba7df78f1c3584c090848d8e5.ctex"]
+source_file="res://ui/simbiot-personal-use/7 preview.jpg"
+dest_files=["res://.godot/imported/7 preview.jpg-0121d16840166a34bf9652a3c001ae31.ctex"]
 
 [params]
 
