@@ -46,6 +46,7 @@ func player_movement(delta):
 		animated_sprite.play("IdleC")
 
 func die():
-	is_dead = true
+	if	is_dead == true:
+		get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
 	velocity = Vector2.ZERO
 	queue_free()
