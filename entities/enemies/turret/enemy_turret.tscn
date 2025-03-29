@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://snu8bhkfbtpw"]
+
+[ext_resource type="Script" uid="uid://bqbugrat8qvp0" path="res://entities/enemies/turret/enemy_turret.gd" id="1_t3rbf"]
+[ext_resource type="Texture2D" uid="uid://dvgrs0ppvo8m6" path="res://icon.svg" id="1_ubnqr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3rbf"]
+size = Vector2(127, 128)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_t3rbf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ubnqr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_t3rbf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, 2, -530, 340, 530, 340)
+
+[node name="RayCast2D" type="RayCast2D" parent="Area2D"]
+
+[node name="ReactionTime" type="Timer" parent="Area2D"]

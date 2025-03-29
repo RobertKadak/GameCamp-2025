@@ -1,11 +1,10 @@
 extends CharacterBody2D
 
-@export var vision_range: float = 200
-@export var reaction_time: float = 1.0
+@export var reaction_time: int = 1.0
 @export var movement_speed: float = 150
-@export var patrol_distance: float = 100
-@export var patrol_duration: int = 2
-@export var wait_time: int = 2
+@export var patrol_distance: float = 200
+@export var patrol_duration: int = 1
+@export var patrol_wait_time: int = 2
 
 @onready var raycast = $RayCast2D
 @onready var reaction_timer = $ReactionTime
@@ -19,6 +18,7 @@ var start_pos
 var left_pos
 var right_pos
 var moving_left = false
+var animation_tween
 
 func _ready():
 	patrol_wait_timer.timeout.connect(_on_PatrolWait_timeout)
@@ -52,10 +52,16 @@ func _on_PatrolWait_timeout():
 	patrol() 
 
 func patrol():	
-	var animation_tween = create_tween()
+	if animation_tween and animation_tween.is_running():
+		return
+	animation_tween = create_tween()
 	if moving_left:
+		enemy.set_scale(Vector2(1,1))
 		animation_tween.tween_property(enemy, "position", left_pos, patrol_duration).set_trans(Tween.TRANS_LINEAR)
 	else:
+		enemy.set_scale(Vector2(-1,1))
 		animation_tween.tween_property(enemy, "position", right_pos, patrol_duration).set_trans(Tween.TRANS_LINEAR)
 	moving_left = !moving_left
-	patrol_wait_timer.start(wait_time)
+	animation_tween.finished.connect(func():
+		patrol_wait_timer.start(patrol_wait_time)
+		)
