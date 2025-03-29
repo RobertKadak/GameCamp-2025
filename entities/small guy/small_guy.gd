@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
 const speed = 300
-@export var jump_impulse = 400
+@export var jump_force = 400
 const gravity = 980
 var is_dead = false
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var active_manager = get_parent()
 
 func _physics_process(delta):
 	if not is_dead:
@@ -30,21 +31,22 @@ func handle_platform_collisions():
 			platform.set_collision_layer_value(1, true)
 
 func player_movement(delta):
-	var player_movement = Input.get_axis("ui_left", "ui_right")
-	if player_movement:
-		velocity.x = player_movement * speed
+	var is_active = active_manager.active
+	
+	if is_active == 2:
+	# Handle jump
+		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+			velocity.y = jump_force
+	
+	# Get input direction
+	var direction = Input.get_axis("ui_left", "ui_right")
+	if direction:
+		velocity.x = direction * speed
 		animated_sprite.play("walking")
-		animated_sprite.flip_h = player_movement < 0
+		animated_sprite.flip_h = direction < 0
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
-		animated_sprite.play("Idle")
-	
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	if is_on_floor():
-		if Input.is_action_just_pressed("ui_accept"):
-			velocity.y = -jump_impulse
+		animated_sprite.play("idle")
 
 func die():
 	is_dead = true
