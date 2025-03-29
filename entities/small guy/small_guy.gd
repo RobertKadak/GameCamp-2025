@@ -6,6 +6,11 @@ const gravity = 980
 var is_dead = false
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var active_manager = get_parent()
+@export var meowM : AudioStream
+@onready var audio = $AudioStreamPlayer
+
+func _ready():
+	meowM = preload('res://soud effects/MeowM.mp3')
 
 func _physics_process(delta):
 	if not is_dead:
@@ -44,6 +49,16 @@ func player_movement(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		animated_sprite.play("IdleC")
+	
+	if Input.is_action_just_pressed("MeowM"):
+	
+		if !$AudioStreamPlayer.is_playing():
+			$AudioStreamPlayer.stream = meowM
+			$AudioStreamPlayer.play()
+		
+		if meowM:
+			audio.stream = meowM
+			audio.play()
 
 func die():
 	if	is_dead == true:
