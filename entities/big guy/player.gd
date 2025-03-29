@@ -6,11 +6,14 @@ extends CharacterBody2D
 @export var smash_cooldown = 1.0  # Cooldown in seconds
 @export var can_move = true  # Toggle to enable/disable movement
 @export var can_attack = true  # Toggle to enable/disable attacking
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var active_manager = get_parent()
 
 var can_smash = true
 var smash_timer = 0.0
 
 func _physics_process(delta):
+		
 	# Add gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -21,24 +24,30 @@ func _physics_process(delta):
 	
 	# Handle attacks if enabled
 	if can_attack:
-		handle_attacks(delta)
+				handle_attacks(delta)
 	
 	# Handle one-way platform collisions
-	handle_platform_collisions()
+				handle_platform_collisions()
 	
-	move_and_slide()
+				move_and_slide()
 
 func handle_movement():
+	var is_active = active_manager.active
+	
+	if is_active == 1:
 	# Handle jump
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = jump_force
+		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+			velocity.y = jump_force
 	
 	# Get input direction
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * speed
+		animated_sprite.play("walking")
+		animated_sprite.flip_h = direction < 0
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
+		animated_sprite.play("idle")
 
 func handle_attacks(delta):
 	# Handle smash attack
