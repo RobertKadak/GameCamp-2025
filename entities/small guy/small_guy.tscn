@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddist6hxf1bmw"]
+[gd_scene load_steps=8 format=3 uid="uid://dmutcj1mgggo5"]
 
 [ext_resource type="Script" uid="uid://5kbg8r3kt834" path="res://entities/small guy/small_guy.gd" id="1_rietb"]
 [ext_resource type="Texture2D" uid="uid://v6erfketcqxo" path="res://ui/catidle.png" id="2_al8dl"]

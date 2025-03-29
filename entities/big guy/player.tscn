@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cpi376swamosn" path="res://ui/golemwalk1cat.png" id="4_e0esr"]
 [ext_resource type="Texture2D" uid="uid://c4im6agopagg8" path="res://ui/golemwalk2.png" id="4_esyv7"]
 [ext_resource type="Texture2D" uid="uid://xhkmxioa0o4v" path="res://ui/golemwalk2cat.png" id="5_srw7e"]
-[ext_resource type="Script" uid="uid://o8kgwfkpyaq2" path="res://entities/big guy/interact.gd" id="5_u8q1v"]
+[ext_resource type="Script" path="res://entities/big guy/interact.gd" id="5_u8q1v"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p0j6k"]
 animations = [{
@@ -56,7 +56,7 @@ size = Vector2(422, 673)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccybq"]
 size = Vector2(721, 740)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["BigGuy"]]
 script = ExtResource("1_abrql")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

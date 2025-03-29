@@ -11,6 +11,9 @@ var is_dead = false
 
 func _ready():
 	meowM = preload('res://soud effects/MeowM.mp3')
+	
+	# Disable collision with BigGuy
+	get_tree().get_nodes_in_group("BigGuy")[0].set_collision_layer_value(1, false)
 
 func _physics_process(delta):
 	if not is_dead:

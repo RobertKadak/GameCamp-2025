@@ -14,6 +14,9 @@ var to_play_walking
 func _ready():
 	to_play_idle = "idle"
 	to_play_walking = "walking"
+	
+	# Disable collision with SmallGuy
+	get_tree().get_nodes_in_group("SmallGuy")[0].set_collision_layer_value(1, false)
 
 func _physics_process(delta):
 	if not is_on_floor():
