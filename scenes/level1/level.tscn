@@ -1,18 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvpohaop4s704"]
+[gd_scene load_steps=9 format=3 uid="uid://dvpohaop4s704"]
 
 [ext_resource type="Script" uid="uid://cni0urkugmoh2" path="res://scenes/level1/camera_controller.gd" id="1_camera_controller"]
 [ext_resource type="PackedScene" uid="uid://0gw2fos8q2c7" path="res://entities/big guy/player.tscn" id="1_thcxp"]
-[ext_resource type="Script" uid="uid://dblcwxlemf8ew" path="res://scenes/level1/level.gd" id="1_w8fjv"]
+[ext_resource type="Script" uid="uid://ynqqn8t27b6i" path="res://active_manager.gd" id="1_w8fjv"]
 [ext_resource type="PackedScene" uid="uid://clj1pl6juouqg" path="res://scenes/wall.tscn" id="3_3ifb4"]
 [ext_resource type="PackedScene" uid="uid://btgfq2h7q85p0" path="res://scenes/platform.tscn" id="4_platform"]
 [ext_resource type="PackedScene" uid="uid://ddist6hxf1bmw" path="res://entities/small guy/small_guy.tscn" id="5_q0hxv"]
+[ext_resource type="PackedScene" uid="uid://cm84i3cbgfns" path="res://entities/interactables/button.tscn" id="7_nyr25"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3ifb4"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_w8fjv")
 
-[node name="Player" parent="." instance=ExtResource("1_thcxp")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_thcxp")]
+position = Vector2(-510, 625)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 drag_left_margin = 0.1
@@ -39,3 +41,6 @@ position = Vector2(-231, 782)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("5_q0hxv")]
 position = Vector2(-270, 588)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("7_nyr25")]
+position = Vector2(-110, 675)
