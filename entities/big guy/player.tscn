@@ -38,9 +38,8 @@ script = ExtResource("1_abrql")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p0j6k")
-animation = &"walking"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.604863
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-30, -5.5)

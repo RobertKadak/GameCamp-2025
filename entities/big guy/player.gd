@@ -47,11 +47,12 @@ func handle_movement():
 		var direction = Input.get_axis("ui_left", "ui_right")
 		if direction:
 			velocity.x = direction * speed
-		animated_sprite.play("walking")
-		animated_sprite.flip_h = direction < 0
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		animated_sprite.play("idle")
+			animated_sprite.play("walking")
+			animated_sprite.flip_h = direction < 0
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed)
+			animated_sprite.play("idle")
+		
 
 func handle_attacks(delta):
 	# Handle smash attack
